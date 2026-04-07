@@ -1,6 +1,5 @@
 * == Identity and Access Management (IAM)
   * CNCF incubation project
-  * Open Source
   * allows
     * | applications, add authentication / 
       * ❌you do NOT handle
