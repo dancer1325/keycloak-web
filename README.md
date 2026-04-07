@@ -1,26 +1,53 @@
-# Sources for keycloak.org
+# keycloak.org
 
-Can be built locally from IDE by running AutoBuilder main method or with Maven by running:
+## documentation
 
-    ./mvnw clean install
-    
-After the build is completed open `target/web/index.html` in your favourite web browser.
-    
-There's also an auto-builder utility that watches the filesystem and continuously rebuilds the website. This can be very useful when working on the website, especially making stylesheet changes, etc. This can be run from your IDE by running `AutoBuilder`, or from the command-line with:
+* [index](templates/template.md)
 
-    ./mvnw -Pauto-run exec:java
+## how to build locally?
+* ways
+  * -- by -- running [AutoBuilder](src/main/java/org/keycloak/webbuilder/AutoBuilder.java)'s `public static void main(){`
+  * `./mvnw clean install`
 
-To serve the website locally with a web browser, specify the base URL with `KC_URL` and start up a Node-based web server:
+### auto-builder utility
 
-    export KC_URL=http://localhost:5000
-    ./mvnw clean install -Dpublish
-    npm run serve
-    
-Finally, when building the website to be published you need to include `-Dpublish`. This should usually not be done manually though as there is a GitHub Action that takes care of building and publishing to `https://github.com/keycloak/keycloak.github.io`.
+* how does it work?
+  * watches the filesystem 
+  * CONTINUOUSLY rebuilds the website
 
-## Server and Operator guides
+* use cases
+  * work | website
 
-Server and Operator guide sources are located at `https://github.com/keycloak/keycloak/tree/main/docs/guides` and are retrieved as a Maven dependency. By default the latest released version is used, but if you want to build the website with the latest guides from `main` first build the guides:
+* how to run?
+  * `./mvnw -Pauto-run exec:java`
+
+## how to serve locally?
+### WITHOUT server
+* steps
+  * [build](#how-to-build-locally)
+  * | web browser,
+    * open [target/web/index.html](/target/web/index.html) 
+
+### WITH server
+* steps
+  * `export KC_URL=http://localhost:5000`
+  * `./mvnw clean install -Dpublish`
+  * `npm run serve`
+
+## how to publish?
+### MANUALLY
+* steps
+  * `./mvnw clean install -Dpublish`
+### AUTOMATICALLY
+* -- via -- [GHA](/.github/workflows/publish.yml)
+
+# Server & Operator guides
+
+* [here](https://github.com/keycloak/keycloak/tree/main/docs/guides)
+* how to get it?
+  * -- as a -- Maven dependency
+
+* TODO: By default the latest released version is used, but if you want to build the website with the latest guides from `main` first build the guides:
 
     git clone https://github.com/keycloak/keycloak
     cd keycloak
