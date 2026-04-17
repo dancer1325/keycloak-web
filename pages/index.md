@@ -22,10 +22,13 @@
     * [Account management console](#account-management-console)
     * [Standard protocols](#standard-protocols)
     * [Authorization services](#authorization-services)
+    * [Extensibility](#extensibility)
+    * [Theme support](#theme-support)
+    * [Flexible authentication](#flexible-authentication)
 
 * sections
   * [guides](https://github.com/dancer1325/keycloak/tree/main/docs/guides)
-  * [docs](https://github.com/dancer1325/keycloak/tree/main/docs/documentation)
+  * [docs](https://github.com/dancer1325/keycloak/tree/main/docs/documentation) coñazo los perros de mierda
   * [downloads](https://www.keycloak.org/downloads)
   * [community](community.md)
   * [blog](/blog)
@@ -52,6 +55,7 @@
     * ❌NO require❌
       * changes | your application
       * code
+    * _Examples:_ Google, GitHub, Facebook, Twitter
   * Identity Brokering
     * how to configure?
       * -- through -- the admin console
@@ -65,7 +69,9 @@
 
 * supported ones
   * LDAP
+    * ALSO enable Kerberos server
   * Active Directory
+    * ALSO enable Kerberos server
   * your OWN provider / users live | OTHER stores (_Example:_ relational database)
 
 ![](/resources/images/dia-user-fed.png)
@@ -73,13 +79,14 @@
 # Admin Console
 
 * allows
-  * centrally manage ALL Keycloak server aspects
   * enable & disable features
     * _Example:_ identity brokering & user federation
-  * manage applications & services
+  * manage 
+    * ALL Keycloak server aspects
+    * applications & services
+    * users
+      * ALSO permissions & sessions 
   * define fine-grained authorization policies
-  * manage users
-    * ALSO permissions & sessions
 
 * used by
   * administrators
@@ -110,6 +117,10 @@
       * OpenID Connect
       * OAuth 2.0
       * SAML
+    * token mappers
+      * map user attributes, roles, etc. -- into -- tokens & statements
+    * CORS support
+      * client adapters have built-in support
 
 ![](/resources/images/dia-protocols.png)
 
@@ -118,3 +129,26 @@
 * -- via --
   * role based authorization
   * fine-grained authorization services
+
+# Extensibility
+
+* == extend Keycloack
+
+* Service Provider Interfaces (SPI)
+  * _Examples:_ authentication flows, user federation providers, protocol mappers
+
+# Theme support
+
+* == customize ALL UI
+  * -> enable you, to integrate -- with -- your applications & branding
+
+# Flexible authentication
+
+* == authenticate user 
+  * -- via -- MULTIPLE mechanisms
+    * _Examples:_ passkey, password or X.509 certificates
+  * supporting 2fa
+    * _Examples:_ passkey, recovery codes and TOTP/HOTP -- via -- Google Authenticator OR FreeOTP
+  * customizing the flow
+    * _Example:_ user self-registration + recover password + verify email + require password update
+
